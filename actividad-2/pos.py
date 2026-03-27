@@ -17,7 +17,6 @@ if __name__ == "__main__":
         medio_pago_seleccionado = MetodoPago(show_menu(
             message="Medio de pago",
             options=MetodoPago,
-            accept_input=True, 
             input_message="Por favor, ingrese su medio de pago"
         ))
     except:
