@@ -10,7 +10,7 @@ from enum import Enum
 
 __all__ = ['show_header', 'show_menu']
 
-def show_header(
+def header(
         message="Encabezado", 
         border_divider="=", 
         border_divider_length=64, 
@@ -35,7 +35,7 @@ def show_header(
     if(bottom_border):
         _border(border_divider, border_divider_length)
 
-def show_menu(
+def menu(
         message="Menú", 
         options=[], 
         border_divider="=", 
