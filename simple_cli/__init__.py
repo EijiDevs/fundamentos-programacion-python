@@ -1,3 +1,3 @@
-from .simple_cli import show_header, show_menu
+from .simple_cli import header, menu
 
 __version__ = "1.0"

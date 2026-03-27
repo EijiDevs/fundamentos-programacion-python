@@ -1,4 +1,4 @@
-from simple_cli import show_header, show_menu
+from simple_cli import header, menu
 from enum import Enum
 
 class MetodoPago(Enum):
@@ -11,10 +11,10 @@ if __name__ == "__main__":
     
     medio_pago_seleccionado = None
 
-    show_header(message="Hola mundo! en POS")
+    header(message="Hola mundo! en POS")
 
     try:
-        medio_pago_seleccionado = MetodoPago(show_menu(
+        medio_pago_seleccionado = MetodoPago(menu(
             message="Medio de pago",
             options=MetodoPago,
             input_message="Por favor, ingrese su medio de pago"

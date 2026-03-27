@@ -8,7 +8,7 @@ Versión: 1.0
 
 from enum import Enum
 
-__all__ = ['show_header', 'show_menu']
+__all__ = ['header', 'menu']
 
 def header(
         message="Encabezado", 
@@ -22,7 +22,7 @@ def header(
         bottom_border=True
     ) -> None :
     """ Función para imprimir un encabezado elegante por consola """
-    if(top_border):
+    if top_border:
         _border(border_divider,border_divider_length)
 
     _vertical_spacing(vertical_divider_spacing)
@@ -36,8 +36,8 @@ def header(
         _border(border_divider, border_divider_length)
 
 def menu(
-        message="Menú", 
-        options=[], 
+        message="Menú",
+        options=None,
         border_divider="=", 
         border_divider_length=64, 
         content_divider=" ", 
@@ -48,7 +48,10 @@ def menu(
         input_message="Por favor, indique su selección"
     ) -> int | None :
     
-    show_header(message=message, border_divider=border_divider, border_divider_length=border_divider_length, content_divider=content_divider, content_divider_length=content_divider_length, vertical_divider_spacing=vertical_divider_spacing, horizontal_divider_spacing=horizontal_divider_spacing, bottom_border=False)
+    if options is None:
+        options = []
+
+    header(message=message, border_divider=border_divider, border_divider_length=border_divider_length, content_divider=content_divider, content_divider_length=content_divider_length, vertical_divider_spacing=vertical_divider_spacing, horizontal_divider_spacing=horizontal_divider_spacing, bottom_border=False)
     
     options = [option.name if isinstance(option, Enum) else str(option).upper() for option in options]
     if "SALIR" not in options:
@@ -107,4 +110,4 @@ if __name__ == "__main__":
     print('show_header(message="Hola mundo!")')
     print("")
     print("Resultado:")
-    show_header("Hola mundo!")
+    header("Hola mundo!")
