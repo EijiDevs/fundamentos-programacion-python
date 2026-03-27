@@ -44,7 +44,7 @@ def show_menu(
         content_divider_length=20, 
         vertical_divider_spacing=0, 
         horizontal_divider_spacing=0, 
-        accept_input=False, 
+        accept_input=True,
         input_message="Por favor, indique su selección"
     ) -> int | None :
     
