@@ -15,7 +15,7 @@ def show_header(
         border_divider="=", 
         border_divider_length=64, 
         content_divider="-",
-        content_divider_length=20, 
+        content_divider_length=22,
         vertical_divider_spacing=0, 
         horizontal_divider_spacing=0, 
         top_border=True, 
