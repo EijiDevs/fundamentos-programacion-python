@@ -13,9 +13,9 @@ __all__ = ['header', 'menu']
 def header(
         message="Encabezado", 
         border_divider="=", 
-        border_divider_length=64, 
+        border_divider_length=64,
         content_divider="-",
-        content_divider_length=22,
+        content_divider_length=21,
         vertical_divider_spacing=0, 
         horizontal_divider_spacing=0, 
         top_border=True, 
@@ -27,8 +27,13 @@ def header(
 
     _vertical_spacing(vertical_divider_spacing)
 
-    # TO-DO: Implementar espaciado horizontal entre el mensaje y los bordes horizontales del contenido EJ: ===[espaciado][Mensaje][espaciado]===
-    print(_horizontal_spacing(content_divider, content_divider_length), message, _horizontal_spacing(content_divider, content_divider_length))
+    print(
+        _content_border(content_divider, content_divider_length),
+        _horizontal_spacing(horizontal_divider_spacing),
+        message,
+        _horizontal_spacing(horizontal_divider_spacing),
+        _content_border(content_divider, content_divider_length)
+    )
     
     _vertical_spacing(vertical_divider_spacing)
     
@@ -62,7 +67,7 @@ def menu(
     
     _border(border_divider, border_divider_length)
 
-    if(accept_input):
+    if accept_input:
         response = None
 
         try:
@@ -89,12 +94,15 @@ def _vertical_spacing(spacing):
     for i in range(spacing):
             print("")
 
-def _horizontal_spacing(spacing, divider):
+def _horizontal_spacing(spacing):
     """ Función para generar una cadena con una cantidad especificada de divisores """
-    return divider * spacing
+    return "" * spacing
 
 def _border(divider, length):
     print(divider * length)
+
+def _content_border(divider, length):
+    return divider * length
 
 def _menu_option(index, value):
     print(f"{index}) {value}")
