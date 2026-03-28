@@ -7,8 +7,10 @@ Versión: 1.0
 """
 
 from enum import Enum
+import os
+import subprocess
 
-__all__ = ['header', 'menu']
+__all__ = ['header', 'menu', 'clear']
 
 def header(
         message="Encabezado", 
@@ -88,6 +90,10 @@ def menu(
 
     return None
 
+def clear():
+    if os.name == "posix":
+        os.environ.setdefault('TERM', 'xterm-256color')
+    subprocess.run("clear" if os.name == "posix" else "cls", shell=True)
 
 def _vertical_spacing(spacing):
     """ Función para imprimir saltos de linea una cantidad especificada de veces """
