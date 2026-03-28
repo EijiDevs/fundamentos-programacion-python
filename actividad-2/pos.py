@@ -25,24 +25,28 @@ class MetodoPago(Enum):
 
 clientes = [] # Codigo, RUT, Nombre, Apellido, Correo
 productos = [] # Codigo, Nombre, Descripcion, Stock, Precio
-ventas = [] # Codigo, Codigo Cliente, Codigo Producto, Cantidad, Total, Metodo Pago, Fecha Pago, Hora Pago
+ventas = [] # Codigo, Codigo Cliente, Codigo Producto, Cantidad, Total, Metodo Pago, Fecha Pago, Hora Pago - Almacena vistas inmutables del diccionario de la transaccion con MappingProxyType
+
+opcion = None
 
 if __name__ == "__main__":
-    
-    medio_pago_seleccionado = None
 
-    header(message="Hola mundo! en POS")
+    metodo_pago_seleccionado = None
+
+    header(message="¡¡Bienvenido a tú sistema CLI POS!!")
 
     time.sleep(2)
     clear()
 
     try:
-        medio_pago_seleccionado = MetodoPago(menu(
+        metodo_pago_seleccionado = MetodoPago(menu(
             message="Medio de pago",
             options=MetodoPago,
             input_message="Por favor, ingrese su medio de pago"
         ))
     except Exception as err:
         raise err
+
+    print(metodo_pago_seleccionado)
 
 
