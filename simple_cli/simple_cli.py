@@ -1,11 +1,3 @@
-"""
-Librería Simple CLI
-------------------
-Módulo para gestionar interfaces de linea de comandos de forma simple.
-Autor: Esteban Perafan
-Versión: 1.0
-"""
-
 from enum import Enum
 import os
 import subprocess
