@@ -58,7 +58,16 @@ def menu(
     if values is None:
         values = []
 
-    header(message=message, border_divider=border_divider, border_divider_length=border_divider_length, content_divider=content_divider, content_divider_length=content_divider_length, vertical_divider_spacing=vertical_divider_spacing, horizontal_divider_spacing=horizontal_divider_spacing, bottom_border=False)
+    header(
+        message=message,
+        border_divider=border_divider,
+        border_divider_length=border_divider_length,
+        content_divider=content_divider,
+        content_divider_length=content_divider_length,
+        vertical_divider_spacing=vertical_divider_spacing,
+        horizontal_divider_spacing=horizontal_divider_spacing,
+        bottom_border=False
+    )
 
     values = [value.name if isinstance(value, Enum) else str(value).upper() for value in values]
     if "SALIR" not in values:
