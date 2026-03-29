@@ -18,3 +18,8 @@ def _menu_option(index, value) -> None:
 
 def _request_input(message) -> str:
     return input(f"{message}: ")
+
+def _indent(text, spaces=4):
+    """Indenta cada línea de un texto."""
+    prefix = " " * spaces
+    return "\n".join(prefix + line for line in text.splitlines())
