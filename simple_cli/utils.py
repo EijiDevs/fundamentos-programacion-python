@@ -14,7 +14,7 @@ def _content_border(divider, length) -> str:
     return divider * length
 
 def _menu_option(index, value) -> None:
-    print(f"{index}) {str.capitalize(value)}")
+    print(f"{index}) {str.capitalize(value).replace("_", " ")}")
 
 def _request_input(message) -> str:
     return input(f"{message}: ")
