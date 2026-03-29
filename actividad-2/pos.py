@@ -49,7 +49,7 @@ def pos():
     try:
         metodo_pago_seleccionado = POSMetodosPago(menu(
             message="Medio de pago",
-            options=POSMetodosPago,
+            values=POSMetodosPago,
             input_message="Por favor, ingrese su medio de pago"
         ))
     except Exception as err:
