@@ -23,13 +23,15 @@ class MetodoPago(Enum):
     TRANSFERENCIA = 4
 
 
-clientes = [] # Codigo, RUT, Nombre, Apellido, Correo
-productos = [] # Codigo, Nombre, Descripcion, Stock, Precio
-ventas = [] # Codigo, Codigo Cliente, Codigo Producto, Cantidad, Total, Metodo Pago, Fecha Pago, Hora Pago - Almacena vistas inmutables del diccionario de la transaccion con MappingProxyType
 
-opcion = None
 
 if __name__ == "__main__":
+
+    opcion = None
+
+    clientes = [] # Codigo, RUT, Nombre, Apellido, Correo
+    productos = [] # Codigo, Nombre, Descripcion, Stock, Precio
+    ventas = [] # Codigo, Codigo Cliente, Codigo Producto, Cantidad, Total, Metodo Pago, Fecha Pago, Hora Pago - Almacena vistas inmutables del diccionario de la transaccion con MappingProxyType
 
     metodo_pago_seleccionado = None
 
