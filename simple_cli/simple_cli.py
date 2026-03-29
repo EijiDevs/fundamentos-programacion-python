@@ -99,30 +99,30 @@ def menu(
 
     return None
 
-def clear():
+def clear() -> None:
     if os.name == "posix":
         os.environ.setdefault('TERM', 'xterm-256color')
     subprocess.run("clear" if os.name == "posix" else "cls", shell=True)
 
-def _vertical_spacing(spacing):
+def _vertical_spacing(spacing) -> None:
     """ Función para imprimir saltos de linea una cantidad especificada de veces """
     for i in range(spacing):
             print("")
 
-def _horizontal_spacing(spacing):
+def _horizontal_spacing(spacing) -> str:
     """ Función para generar una cadena con una cantidad especificada de divisores """
     return "" * spacing
 
-def _border(divider, length):
+def _border(divider, length) -> None:
     print(divider * length)
 
-def _content_border(divider, length):
+def _content_border(divider, length) -> str:
     return divider * length
 
-def _menu_option(index, value):
+def _menu_option(index, value) -> None:
     print(f"{index}) {value}")
 
-def _request_input(message):
+def _request_input(message) -> str:
     return input(f"{message}: ")
 
 if __name__ == "__main__":
