@@ -32,11 +32,7 @@ class POSMetodosPago(IntEnum):
     CREDITO = 3
     TRANSFERENCIA = 4
 
-
-
-
-if __name__ == "__main__":
-
+def pos():
     opcion = None
 
     clientes = [] # Codigo, RUT, Nombre, Apellido, Correo
@@ -61,4 +57,5 @@ if __name__ == "__main__":
 
     print(metodo_pago_seleccionado)
 
-
+if __name__ == "__main__":
+    pos()
