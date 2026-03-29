@@ -1,22 +1,32 @@
 from simple_cli import header, menu, clear
-from enum import Enum
+from enum import IntEnum
 import time
 
-class POS(Enum):
-    CREAR_PRODUCTO = 1
-    VER_PRODUCTO = 2
+class POSAccionesPrincipales(IntEnum):
+    VENDER = 1,
+    VER_CLIENTES = 2,
     VER_PRODUCTOS = 3
-    ELIMINAR_PRODUCTO = 4
-    ABASTECER_STOCK_PRODUCTO = 5
-    VER_STOCK_PRODUCTOS = 6
-    VER_STOCK_PRODUCTO = 7
-    CREAR_CLIENTE = 8
-    VER_CLIENTE = 9
-    VER_CLIENTES = 10
-    ELIMINAR_CLIENTE = 11
-    VENDER = 12
 
-class MetodoPago(Enum):
+class POSAccionesClientes(IntEnum):
+    VER_CLIENTES = 1,
+    VER_CLIENTE = 2,
+    CREAR_CLIENTE = 3,
+    ELIMINAR_CLIENTE = 4
+
+class POSAccionesProductos(IntEnum):
+    VER_PRODUCTOS = 1,
+    VER_PRODUCTO = 2,
+    CREAR_PRODUCTO = 3,
+    ELIMINAR_PRODUCTO = 4,
+    ABASTECER_PRODUCTO = 5
+
+class POSAccionesVenta(IntEnum):
+    SELECCIONAR_CLIENTE = 1,
+    SELECCIONAR_PRODUCTO = 2,
+    PAGAR = 3
+
+
+class POSMetodosPago(IntEnum):
     EFECTIVO = 1
     DEBITO = 2
     CREDITO = 3
@@ -41,9 +51,9 @@ if __name__ == "__main__":
     clear()
 
     try:
-        metodo_pago_seleccionado = MetodoPago(menu(
+        metodo_pago_seleccionado = POSMetodosPago(menu(
             message="Medio de pago",
-            options=MetodoPago,
+            options=POSMetodosPago,
             input_message="Por favor, ingrese su medio de pago"
         ))
     except Exception as err:
