@@ -44,7 +44,7 @@ def header(
 
 def menu(
         message="Menú",
-        options=None,
+        values=None,
         border_divider="=", 
         border_divider_length=64, 
         content_divider=" ", 
@@ -55,16 +55,16 @@ def menu(
         input_message="Por favor, indique su selección"
     ) -> int | None :
     
-    if options is None:
-        options = []
+    if values is None:
+        values = []
 
     header(message=message, border_divider=border_divider, border_divider_length=border_divider_length, content_divider=content_divider, content_divider_length=content_divider_length, vertical_divider_spacing=vertical_divider_spacing, horizontal_divider_spacing=horizontal_divider_spacing, bottom_border=False)
-    
-    options = [option.name if isinstance(option, Enum) else str(option).upper() for option in options]
-    if "SALIR" not in options:
-        options.append("SALIR")
 
-    for index, value in enumerate(options):
+    values = [value.name if isinstance(value, Enum) else str(value).upper() for value in values]
+    if "SALIR" not in values:
+        values.append("SALIR")
+
+    for index, value in enumerate(values):
         _menu_option(index + 1, str.capitalize(value.name) if isinstance(value, Enum) else str.capitalize(value))
     
     _border(border_divider, border_divider_length)
@@ -81,7 +81,7 @@ def menu(
             raise ValueError(f"Ha ingresado una opción no valida, por favor, indique un valor númerico como parte de su selección. {err}")
 
         try:
-            if response is None or response > len(options):
+            if response is None or response > len(values):
                 raise ValueError("Ha ingresado una opción no valida. La opción que ha seleccionado no se encuentra en el menú.")
         except ValueError as err:
             raise err
