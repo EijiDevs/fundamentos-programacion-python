@@ -1,8 +1,15 @@
 from enum import Enum
+from utils import _border, _content_border, _horizontal_spacing, _menu_option, _request_input, _vertical_spacing
+
+__all__ = ['header', 'menu', 'clear']
+
 import os
 import subprocess
 
-__all__ = ['header', 'menu', 'clear']
+def clear() -> None:
+    if os.name == "posix":
+        os.environ.setdefault('TERM', 'xterm-256color')
+    subprocess.run("clear" if os.name == "posix" else "cls", shell=True)
 
 def header(
         message="Encabezado", 
@@ -90,32 +97,6 @@ def menu(
         return response
 
     return None
-
-def clear() -> None:
-    if os.name == "posix":
-        os.environ.setdefault('TERM', 'xterm-256color')
-    subprocess.run("clear" if os.name == "posix" else "cls", shell=True)
-
-def _vertical_spacing(spacing) -> None:
-    """ Función para imprimir saltos de linea una cantidad especificada de veces """
-    for i in range(spacing):
-            print("")
-
-def _horizontal_spacing(spacing) -> str:
-    """ Función para generar una cadena con una cantidad especificada de divisores """
-    return "" * spacing
-
-def _border(divider, length) -> None:
-    print(divider * length)
-
-def _content_border(divider, length) -> str:
-    return divider * length
-
-def _menu_option(index, value) -> None:
-    print(f"{index}) {value}")
-
-def _request_input(message) -> str:
-    return input(f"{message}: ")
 
 if __name__ == "__main__":
     print("Bienvenido a Simple CLI! Somos una libreria diseñada para gestionar interfaces de usuario en terminal de forma simple.\n")
