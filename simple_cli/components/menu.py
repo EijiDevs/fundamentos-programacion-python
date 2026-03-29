@@ -1,5 +1,5 @@
 from ..utils import _border, _menu_option, _request_input, _vertical_spacing
-from header import header
+from .header import header
 from enum import Enum
 
 def menu(
@@ -34,7 +34,7 @@ def menu(
         values.append("SALIR")
 
     for index, value in enumerate(values):
-        _menu_option(index + 1, str.capitalize(value.name) if isinstance(value, Enum) else str.capitalize(value))
+        _menu_option(index + 1, value)
 
     _border(border_divider, border_divider_length)
 
@@ -49,11 +49,8 @@ def menu(
         except ValueError as err:
             raise ValueError(f"Ha ingresado una opción no valida, por favor, indique un valor númerico como parte de su selección. {err}")
 
-        try:
-            if response is None or response > len(values):
-                raise ValueError("Ha ingresado una opción no valida. La opción que ha seleccionado no se encuentra en el menú.")
-        except ValueError as err:
-            raise err
+        if response is None or response > len(values):
+            raise ValueError("Ha ingresado una opción no valida. La opción que ha seleccionado no se encuentra en el menú.")
 
         return response
 

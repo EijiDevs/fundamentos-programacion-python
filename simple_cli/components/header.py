@@ -1,4 +1,3 @@
-from enum import Enum
 from ..utils import _border, _content_border, _horizontal_spacing, _vertical_spacing
 
 def header(
