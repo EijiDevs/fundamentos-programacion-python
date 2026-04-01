@@ -1,32 +1,47 @@
+from collections.abc import Callable
+from typing import Any, TypedDict
 from simple_cli import header, menu, clear
 from enum import IntEnum
 import time
 
-class POSAccionesPrincipales(IntEnum):
-    VENDER = 1,
-    VER_CLIENTES = 2,
-    VER_PRODUCTOS = 3
+# Definición alias de tipado para mejorar la legibilidad del código (define un contrato en tiempo de checking sin clases)
+# TypedDict -> Nueva sintaxis para definir un diccionario con una estructura y tipos conocidos a partir de Py 3.8+
+class Producto(TypedDict):
+    codigo: str
+    nombre: str
+    descripcion: str
+    stock: int
+    precio: float
 
-class POSAccionesClientes(IntEnum):
-    VER_CLIENTES = 1,
-    VER_CLIENTE = 2,
-    CREAR_CLIENTE = 3,
-    ELIMINAR_CLIENTE = 4
+# type -> Nueva sintaxis para TypeAlias del modulo typing a partir de Py 3.12+
+type MenuEjemploOption = dict[str, int | str | Callable[..., Any]]
+type MenuEjemplo = dict[str, str | list[MenuEjemploOption]]
 
-class POSAccionesProductos(IntEnum):
-    VER_PRODUCTOS = 1,
-    VER_PRODUCTO = 2,
-    CREAR_PRODUCTO = 3,
-    ELIMINAR_PRODUCTO = 4,
-    ABASTECER_PRODUCTO = 5
+# Ejemplo de callable inyectable en el menu
+def crear_producto() -> Producto :
+    # Diccionario literal + ejecución secuencial de inputs para solicitar la información necesaria para crear un producto
+    return {
+        "codigo": input("Por favor, ingrese el codigo del producto: "),
+        "nombre": input("Por favor, ingrese el nombre del producto: "),
+        "descripcion": input("Por favor, ingrese la descripcion del producto: "),
+        "stock": int(input("Por favor, ingrese el stock del producto: ")),
+        "precio": float(input("Por favor, ingrese el precio del producto: ")),
+    }
 
-class POSAccionesVenta(IntEnum):
-    SELECCIONAR_CLIENTE = 1,
-    SELECCIONAR_PRODUCTO = 2,
-    PAGAR = 3
+# Estructura de ejemplo para crear un menu sin necesidad de clases
+ejemplo_estructura_menu: MenuEjemplo = {
+    "id" : "",
+    "description" : "",
+    "options" : [
+        {
+            "id" : 0,
+            "description" : "",
+            "href" : crear_producto
+        }
+    ]
+}
 
-
-class POSMetodosPago(IntEnum):
+class MetodoPago(IntEnum):
     EFECTIVO = 1
     DEBITO = 2
     CREDITO = 3
@@ -47,9 +62,9 @@ def main():
     clear()
 
     try:
-        metodo_pago_seleccionado = POSMetodosPago(menu(
+        metodo_pago_seleccionado = MetodoPago(menu(
             message="Medio de pago",
-            values=POSMetodosPago,
+            values=MetodoPago,
             input_message="Por favor, ingrese su medio de pago"
         ))
     except Exception as err:
