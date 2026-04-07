@@ -16,7 +16,7 @@ while opcion != 3:
         case 1:
             print("Opción 1 seleccionada: Registrar Ventas")
             cantidad_ventas = int(input("Por favor, ingrese la cantidad de ventas a registrar: "))
-            if cantidad_ventas <= 5:
+            if cantidad_ventas < 5:
                  print("La cantidad de ventas a registrar debe ser mayor a 5. Por favor, intente nuevamente.")
                  continue
             for i in range(cantidad_ventas):
