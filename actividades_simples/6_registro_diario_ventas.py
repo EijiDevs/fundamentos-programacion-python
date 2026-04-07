@@ -39,7 +39,6 @@ while opcion != 3:
                 print("=== ¡VENTAS BAJO EL PROMEDIO ESPERADO! ===")
 
         case _:
-            opcion = None
             cantidad_ventas = 0
             total_ventas = 0
             promedio_venta = 0
