@@ -62,4 +62,3 @@ while opcion != 3:
                 print("Consumo promedio adecuado")
         case 3:
             print("Fin del registro")
-            exit()
