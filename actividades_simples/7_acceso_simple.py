@@ -16,3 +16,5 @@ if has_reserva:
     print("Ingreso permitido")
 else:
     print("Ingreso rechazado: sin reserva")
+
+print("Fin del proceso")
