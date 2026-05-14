@@ -4,6 +4,7 @@ from simple_cli import header, menu, clear
 from enum import IntEnum
 import time
 
+
 # Definición alias de tipado para mejorar la legibilidad del código (define un contrato en tiempo de checking sin clases)
 # TypedDict -> Nueva sintaxis para definir un diccionario con una estructura y tipos conocidos a partir de Py 3.8+
 class Producto(TypedDict):
@@ -12,6 +13,8 @@ class Producto(TypedDict):
     descripcion: str
     stock: int
     precio: float
+
+type Bodega = list[Producto]
 
 # type -> Nueva sintaxis para TypeAlias del modulo typing a partir de Py 3.12+
 type MenuEjemploOption = dict[str, int | str | Callable[..., Any]]
@@ -49,6 +52,37 @@ class MetodoPago(IntEnum):
 
 def main():
     opcion = None
+
+    bodega : Bodega = [
+        {
+            "codigo": "001",
+            "nombre": "Coca-Cola",
+            "descripcion": "Bebida gaseosa de cola",
+            "stock": 100,
+            "precio": 1230
+        },
+        {
+            "codigo": "002",
+            "nombre": "Pepsi",
+            "descripcion": "Bebida gaseosa de cola",
+            "stock": 80,
+            "precio": 1490
+        },
+        {
+            "codigo": "003",
+            "nombre": "Fanta",
+            "descripcion": "Bebida gaseosa de naranja",
+            "stock": 50,
+            "precio": 1300
+        },
+        {
+            "codigo": "004",
+            "nombre": "Silver",
+            "descripcion": "Bebida gaseosa de cola",
+            "stock": 50,
+            "precio": 1200
+        }
+    ] # Bodega con productos pre-cargados
 
     clientes = [] # Codigo, RUT, Nombre, Apellido, Correo
     productos = [] # Codigo, Nombre, Descripcion, Stock, Precio
