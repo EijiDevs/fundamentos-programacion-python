@@ -88,8 +88,6 @@ if __name__ == '__main__':
                         if respuesta != "s":
                             break
                 case 4:
-                    # primero pido todos los datos y despues valido cada uno por separado;
-                    # el primer campo invalido corta el registro y no agrega nada
                     codigo = input("Ingrese código de la prenda: ")
                     nombre = input("Ingrese nombre: ")
                     categoria = input("Ingrese categoría: ")
